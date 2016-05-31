@@ -1,8 +1,10 @@
 package com.example.jmack.paint;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.util.Log;
 import android.util.Pair;
@@ -14,7 +16,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 /**
  * Created by jmack on 5/31/16.
  */
-public class DrawView extends SurfaceView implements Runnable {
+public class DrawView extends SurfaceView implements Runnable, SurfaceHolder.Callback  {
     private Thread drawloop = null;
     private SurfaceHolder surface;
     volatile boolean running = false;
@@ -23,29 +25,34 @@ public class DrawView extends SurfaceView implements Runnable {
 
     private int motion = 0;
 
+    private Canvas mCanvas;
+    private int mCanvasW;
+    private int mCanvasH;
+    private Bitmap mBitmap;
+
+    private Matrix identityMatrix;
+
     public ConcurrentLinkedQueue<Pair> queue = new ConcurrentLinkedQueue<>();
 
 
     public DrawView(Context context) {
         super(context);
-
-        surface = getHolder();
-
     }
 
     @Override
     public void run() {
         while (running){
+
             if (!surface.getSurface().isValid()){
                 continue;
             }
 
             Canvas canvas = surface.lockCanvas();
 
-            canvas.drawColor(Color.rgb(25, 0, 100));
+            //canvas.drawColor(Color.rgb(25, 0, 100));
 
 
-            Paint paint = new Paint();
+            Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
             paint.setStyle(Paint.Style.FILL);
             paint.setColor(Color.GREEN);
 
@@ -55,9 +62,10 @@ public class DrawView extends SurfaceView implements Runnable {
                 int y = (int)pair.second;
 
                 if (x != 0 && y != 0) {
-                    canvas.drawCircle(x, y, 100, paint);
+                    mCanvas.drawCircle(x, y, 100, paint);
                 }
             }
+            canvas.drawBitmap(mBitmap, identityMatrix, null);
 
             surface.unlockCanvasAndPost(canvas);
         }
@@ -65,6 +73,9 @@ public class DrawView extends SurfaceView implements Runnable {
 
     public void resume(){
         running = true;
+        surface = getHolder();
+        getHolder().addCallback(this);
+
         drawloop = new Thread(this);
         drawloop.start();
     }
@@ -72,13 +83,35 @@ public class DrawView extends SurfaceView implements Runnable {
     public void pause(){
         running = false;
 
-        while(true){
+        while(running == false){
             try{
                 drawloop.join();
+                running = true;
             } catch (InterruptedException e){
                 Log.v("DrawView", e.getMessage());
             }
         }
     }
 
+    @Override
+    public void surfaceCreated(SurfaceHolder holder) {
+        mCanvasW = getWidth();
+        mCanvasH = getHeight();
+        Log.v("WIDTH", String.valueOf(mCanvasH));
+        mBitmap = Bitmap.createBitmap(mCanvasW, mCanvasH, Bitmap.Config.ARGB_8888);
+        mCanvas = new Canvas();
+        mCanvas.setBitmap(mBitmap);
+
+        identityMatrix = new Matrix();
+    }
+
+    @Override
+    public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
+
+    }
+
+    @Override
+    public void surfaceDestroyed(SurfaceHolder holder) {
+
+    }
 }
