@@ -28,8 +28,8 @@ public class MainActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
 
-        drawView = new DrawView(this);
-        setContentView(drawView);
+        drawView = (DrawView) findViewById(R.id.drawview);
+        //setContentView(drawView);
     }
 
     @Override
@@ -46,8 +46,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onTouchEvent(MotionEvent e){
-        int x = (int)e.getX();
-        int y = (int)e.getY() - mActionBarSize;
+        float x = (float)e.getX();
+        float y = (float)e.getY() - mActionBarSize;
 
         Pair pair;
 

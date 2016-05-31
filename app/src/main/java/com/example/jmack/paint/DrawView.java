@@ -6,6 +6,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.util.AttributeSet;
 import android.util.Log;
 import android.util.Pair;
 import android.view.SurfaceHolder;
@@ -39,6 +40,18 @@ public class DrawView extends SurfaceView implements Runnable, SurfaceHolder.Cal
         super(context);
     }
 
+    public DrawView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
+
+    public DrawView(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+    }
+
+    public DrawView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
+    }
+
     @Override
     public void run() {
         while (running){
@@ -49,20 +62,22 @@ public class DrawView extends SurfaceView implements Runnable, SurfaceHolder.Cal
 
             Canvas canvas = surface.lockCanvas();
 
-            //canvas.drawColor(Color.rgb(25, 0, 100));
+            canvas.drawColor(Color.rgb(25, 0, 100));
 
 
             Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
             paint.setStyle(Paint.Style.FILL);
             paint.setColor(Color.GREEN);
+            paint.setStrokeWidth(1);
 
-            if (queue.peek() != null){
+            while (queue.peek() != null){
                 Pair pair = queue.poll();
-                int x = (int)pair.first;
-                int y = (int)pair.second;
+                float x = (float)pair.first;
+                float y = (float)pair.second;
 
                 if (x != 0 && y != 0) {
-                    mCanvas.drawCircle(x, y, 100, paint);
+                    mCanvas.drawCircle(x, y, 20, paint);
+                    //mCanvas.drawPoint(x, y, paint);
                 }
             }
             canvas.drawBitmap(mBitmap, identityMatrix, null);
