@@ -6,6 +6,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.util.Pair;
@@ -33,6 +34,8 @@ public class DrawView extends SurfaceView implements Runnable, SurfaceHolder.Cal
 
     private Matrix identityMatrix;
 
+    private Path path = new Path();
+
     public ConcurrentLinkedQueue<Pair> queue = new ConcurrentLinkedQueue<>();
 
 
@@ -55,7 +58,6 @@ public class DrawView extends SurfaceView implements Runnable, SurfaceHolder.Cal
     @Override
     public void run() {
         while (running){
-
             if (!surface.getSurface().isValid()){
                 continue;
             }
@@ -66,9 +68,9 @@ public class DrawView extends SurfaceView implements Runnable, SurfaceHolder.Cal
 
 
             Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-            paint.setStyle(Paint.Style.FILL);
+            paint.setStyle(Paint.Style.STROKE);
             paint.setColor(Color.GREEN);
-            paint.setStrokeWidth(1);
+            paint.setStrokeWidth(3);
 
             while (queue.peek() != null){
                 Pair pair = queue.poll();
@@ -76,7 +78,8 @@ public class DrawView extends SurfaceView implements Runnable, SurfaceHolder.Cal
                 float y = (float)pair.second;
 
                 if (x != 0 && y != 0) {
-                    mCanvas.drawCircle(x, y, 20, paint);
+                    path.lineTo()
+                    //mCanvas.drawCircle(x, y, 10, paint);
                     //mCanvas.drawPoint(x, y, paint);
                 }
             }

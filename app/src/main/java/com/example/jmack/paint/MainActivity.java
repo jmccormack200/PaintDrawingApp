@@ -46,19 +46,25 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onTouchEvent(MotionEvent e){
-        float x = (float)e.getX();
-        float y = (float)e.getY() - mActionBarSize;
 
-        Pair pair;
+        int historySize = e.getHistorySize();
 
-        switch (e.getAction()){
-            case MotionEvent.ACTION_MOVE:
+        for (int i = 0; i < historySize; i++){
 
-                pair = new Pair(x, y);
-                drawView.queue.add(pair);
-                break;
+            float x = (float) e.getHistoricalX(i);
+            float y = (float) e.getHistoricalY(i) - mActionBarSize;
+
+            Pair pair;
+
+            switch (e.getAction()) {
+                case MotionEvent.ACTION_MOVE:
+                case MotionEvent.ACTION_UP:
+
+                    pair = new Pair(x, y);
+                    drawView.queue.add(pair);
+                    break;
+            }
         }
-        return false;
-
+    return false;
     }
 }
