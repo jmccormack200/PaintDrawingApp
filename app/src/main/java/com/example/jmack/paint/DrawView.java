@@ -42,22 +42,22 @@ public class DrawView extends SurfaceView implements Runnable {
 
             Canvas canvas = surface.lockCanvas();
 
-            if (clearDrawing) {
-                canvas.drawColor(Color.rgb(25, 0, 100));
-                clearDrawing = false;
-            }
+            canvas.drawColor(Color.rgb(25, 0, 100));
+
 
             Paint paint = new Paint();
             paint.setStyle(Paint.Style.FILL);
-            paint.setColor(Color.WHITE);
+            paint.setColor(Color.GREEN);
 
             if (queue.peek() != null){
                 Pair pair = queue.poll();
-                float x = (float)pair.first;
-                float y = (float)pair.second;
-                canvas.drawCircle(x, y, 100, paint);
-            }
+                int x = (int)pair.first;
+                int y = (int)pair.second;
 
+                if (x != 0 && y != 0) {
+                    canvas.drawCircle(x, y, 100, paint);
+                }
+            }
 
             surface.unlockCanvasAndPost(canvas);
         }

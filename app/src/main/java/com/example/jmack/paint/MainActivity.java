@@ -1,7 +1,8 @@
 package com.example.jmack.paint;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.res.TypedArray;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Pair;
 import android.view.MotionEvent;
 import android.view.Window;
@@ -10,12 +11,22 @@ public class MainActivity extends AppCompatActivity {
 
     DrawView drawView;
 
+    private TypedArray styledAttributes;
+    private int mActionBarSize;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        styledAttributes = this.getTheme().obtainStyledAttributes(
+                new int[]{
+                        android.R.attr.actionBarSize});
+        mActionBarSize = (int) styledAttributes.getDimension(0,0);
+
+
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
-
 
         drawView = new DrawView(this);
         setContentView(drawView);
@@ -35,15 +46,19 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onTouchEvent(MotionEvent e){
-        float x = e.getX();
-        float y = e.getY();
+        int x = (int)e.getX();
+        int y = (int)e.getY() - mActionBarSize;
+
+        Pair pair;
 
         switch (e.getAction()){
             case MotionEvent.ACTION_MOVE:
-                Pair pair = new Pair(x, y);
+
+                pair = new Pair(x, y);
                 drawView.queue.add(pair);
+                break;
         }
-        return true;
+        return false;
 
     }
 }
