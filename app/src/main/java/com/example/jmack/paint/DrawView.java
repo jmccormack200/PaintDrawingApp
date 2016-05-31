@@ -1,135 +1,89 @@
 package com.example.jmack.paint;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.util.Pair;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
+import android.view.MotionEvent;
+import android.view.View;
 
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
  * Created by jmack on 5/31/16.
  */
-public class DrawView extends SurfaceView implements Runnable, SurfaceHolder.Callback  {
-    private Thread drawloop = null;
-    private SurfaceHolder surface;
-    volatile boolean running = false;
-
-    private boolean clearDrawing = true;
-
-    private int motion = 0;
-
-    private Canvas mCanvas;
-    private int mCanvasW;
-    private int mCanvasH;
-    private Bitmap mBitmap;
-
-    private Matrix identityMatrix;
+public class DrawView extends View {
 
     private Path path = new Path();
+    private Paint paint = new Paint();
 
     public ConcurrentLinkedQueue<Pair> queue = new ConcurrentLinkedQueue<>();
 
 
     public DrawView(Context context) {
         super(context);
+        setupDrawView();
     }
 
     public DrawView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        setupDrawView();
     }
 
     public DrawView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        setupDrawView();
     }
 
     public DrawView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
+        setupDrawView();
+    }
+
+    private void setupDrawView(){
+        paint.setAntiAlias(true);
+        paint.setColor(Color.BLACK);
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setStrokeJoin(Paint.Join.ROUND);
+        paint.setStrokeWidth(5f);
     }
 
     @Override
-    public void run() {
-        while (running){
-            if (!surface.getSurface().isValid()){
-                continue;
-            }
+    protected void onDraw(Canvas canvas){
+        canvas.drawPath(path, paint);
+    }
 
-            Canvas canvas = surface.lockCanvas();
+    public void clear(){
+        path.reset();
+        invalidate();
+    }
 
-            canvas.drawColor(Color.rgb(25, 0, 100));
+    @Override
+    public boolean onTouchEvent(MotionEvent event){
+        float eventX = event.getX();
+        float eventY = event.getY();
 
-
-            Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-            paint.setStyle(Paint.Style.STROKE);
-            paint.setColor(Color.GREEN);
-            paint.setStrokeWidth(3);
-
-            while (queue.peek() != null){
-                Pair pair = queue.poll();
-                float x = (float)pair.first;
-                float y = (float)pair.second;
-
-                if (x != 0 && y != 0) {
-                    path.lineTo()
-                    //mCanvas.drawCircle(x, y, 10, paint);
-                    //mCanvas.drawPoint(x, y, paint);
+        switch(event.getAction()){
+            case MotionEvent.ACTION_DOWN:
+                path.moveTo(eventX, eventY);
+            case MotionEvent.ACTION_MOVE:
+            case MotionEvent.ACTION_UP:
+                int historySize = event.getHistorySize();
+                for (int i = 0; i < historySize; i++) {
+                    float historicalX = event.getHistoricalX(i);
+                    float historicalY = event.getHistoricalY(i);
+                    path.lineTo(historicalX, historicalY);
                 }
-            }
-            canvas.drawBitmap(mBitmap, identityMatrix, null);
-
-            surface.unlockCanvasAndPost(canvas);
+                path.lineTo(eventX, eventY);
+                break;
+            default:
+                return false;
         }
-    }
-
-    public void resume(){
-        running = true;
-        surface = getHolder();
-        getHolder().addCallback(this);
-
-        drawloop = new Thread(this);
-        drawloop.start();
-    }
-
-    public void pause(){
-        running = false;
-
-        while(running == false){
-            try{
-                drawloop.join();
-                running = true;
-            } catch (InterruptedException e){
-                Log.v("DrawView", e.getMessage());
-            }
-        }
-    }
-
-    @Override
-    public void surfaceCreated(SurfaceHolder holder) {
-        mCanvasW = getWidth();
-        mCanvasH = getHeight();
-        Log.v("WIDTH", String.valueOf(mCanvasH));
-        mBitmap = Bitmap.createBitmap(mCanvasW, mCanvasH, Bitmap.Config.ARGB_8888);
-        mCanvas = new Canvas();
-        mCanvas.setBitmap(mBitmap);
-
-        identityMatrix = new Matrix();
-    }
-
-    @Override
-    public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-
-    }
-
-    @Override
-    public void surfaceDestroyed(SurfaceHolder holder) {
-
+        invalidate();
+        return true;
     }
 }

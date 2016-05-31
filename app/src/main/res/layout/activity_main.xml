@@ -36,6 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.33"
             android:layout_marginStart="5dp"
+            android:onClick="clearAll"
             android:src="@drawable/ic_undo_black_24dp"/>
 
     </LinearLayout>

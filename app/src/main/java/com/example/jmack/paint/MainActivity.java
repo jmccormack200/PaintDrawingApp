@@ -3,13 +3,12 @@ package com.example.jmack.paint;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Pair;
-import android.view.MotionEvent;
+import android.view.View;
 import android.view.Window;
 
 public class MainActivity extends AppCompatActivity {
 
-    DrawView drawView;
+    private DrawView mDrawView;
 
     private TypedArray styledAttributes;
     private int mActionBarSize;
@@ -28,43 +27,21 @@ public class MainActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
 
-        drawView = (DrawView) findViewById(R.id.drawview);
-        //setContentView(drawView);
+        mDrawView = (DrawView) findViewById(R.id.drawview);
     }
 
     @Override
     public void onResume(){
         super.onResume();
-        drawView.resume();
     }
 
     @Override
     public void onPause(){
         super.onPause();
-        drawView.pause();
     }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent e){
-
-        int historySize = e.getHistorySize();
-
-        for (int i = 0; i < historySize; i++){
-
-            float x = (float) e.getHistoricalX(i);
-            float y = (float) e.getHistoricalY(i) - mActionBarSize;
-
-            Pair pair;
-
-            switch (e.getAction()) {
-                case MotionEvent.ACTION_MOVE:
-                case MotionEvent.ACTION_UP:
-
-                    pair = new Pair(x, y);
-                    drawView.queue.add(pair);
-                    break;
-            }
-        }
-    return false;
+    public void clearAll(View view){
+        mDrawView.clear();
     }
+
 }
