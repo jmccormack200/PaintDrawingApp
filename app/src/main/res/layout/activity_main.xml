@@ -10,36 +10,33 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent"/>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_gravity="bottom|end">
 
+        <include layout="@layout/sdpallete"
+            android:id="@+id/sdpallete"/>
+
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab"
+            android:id="@+id/brush"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginStart="5dp"
-            android:src="@drawable/ic_brush_black_24dp" />
+            android:src="@drawable/ic_brush_black_24dp"
+            android:layout_alignBottom="@+id/sdpallete"
+            android:layout_toEndOf="@+id/sdpallete" />
 
         <android.support.design.widget.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.33"
+            android:layout_alignParentEnd="true"
             android:layout_marginStart="5dp"
-            android:src="@drawable/ic_palette_black_24dp"/>
-
-        <android.support.design.widget.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.33"
-            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
             android:onClick="clearAll"
             android:src="@drawable/ic_undo_black_24dp"/>
 
-    </LinearLayout>
+    </RelativeLayout>
 
 
 </FrameLayout>
