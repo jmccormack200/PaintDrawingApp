@@ -9,5 +9,6 @@
     <color name="Blue">#0000FF</color>
     <color name="Black">#000000</color>
     <color name="Yellow">#FFFF00</color>
-    <color name="AQUA">#00FFFF</color>
+    <color name="Aqua">#00FFFF</color>
+    <color name="White">#FFFFFF</color>
 </resources>

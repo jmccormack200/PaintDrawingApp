@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private TypedArray styledAttributes;
     private int mActionBarSize;
 
-    private boolean collapsePal = true;
+    private boolean collapsePal = false;
     private ViewGroup paletteContainer;
     private View rootPalette;
 
@@ -123,7 +123,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void collapseFAB(){
+        AnimatorSet animatorSet = new AnimatorSet();
 
+        ArrayList<Animator> animatorArrayList = new ArrayList<>();
+        for (int i = 0; i < paletteArrayList.size(); i++){
+            Animator animator = createCollapseAnimator(
+                    paletteArrayList.get(i).getView(), paletteArrayList.get(i).getOffset()
+            );
+            animatorArrayList.add(animator);
+        }
+        animatorSet.playTogether(animatorArrayList);
+        animatorSet.start();
     }
 }
 
