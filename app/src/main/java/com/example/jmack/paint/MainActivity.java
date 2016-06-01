@@ -6,7 +6,6 @@ import android.animation.ObjectAnimator;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
@@ -27,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     //TODO: Convert this to a list
 
-    private ArrayList<View> paletteArrayList = new ArrayList<>();
+    private ArrayList<ViewOffsetHolder> paletteArrayList = new ArrayList<>();
 
 
     @Override
@@ -67,22 +66,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void initCollapseFAB(final ViewGroup fabContainer,
-                                final ArrayList<View> fabArrayList){
-
-        //TODO I think we can remove this part
-        for (int i=0; i < fabContainer.getChildCount(); i++) {
-            fabArrayList.add(fabContainer.getChildAt(i));
-        }
+                                final ArrayList<ViewOffsetHolder> fabArrayList){
 
         fabContainer.getViewTreeObserver()
                 .addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener(){
             @Override
             public boolean onPreDraw(){
                 fabContainer.getViewTreeObserver().removeOnPreDrawListener(this);
-                for(int i = (fabArrayList.size() - 1); i > 0; i--){
-                    Log.v("HELP", String.valueOf(i));
-                    float offset = fabArrayList.get(i).getY() - fabArrayList.get(i - 1).getY();
-                    fabArrayList.get(i - 1).setTranslationY(offset);
+                for(int i = (fabContainer.getChildCount() - 1); i > 0; i--){
+
+                    float offset = fabContainer.getChildAt(i).getY()
+                            - fabContainer.getChildAt(i - 1).getY();
+                    fabContainer.getChildAt(i - 1).setTranslationY(offset);
+                    ViewOffsetHolder viewOffsetHolder =
+                            new ViewOffsetHolder(fabContainer.getChildAt(i-1), offset);
+                    fabArrayList.add(viewOffsetHolder);
                 }
                 return true;
             }
@@ -94,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
         if (collapsePal) {
             expandFAB();
         } else {
-            //collapseFAB();
+            collapseFAB();
         }
     }
 
@@ -113,8 +111,19 @@ public class MainActivity extends AppCompatActivity {
     private void expandFAB(){
         AnimatorSet animatorSet = new AnimatorSet();
 
+
         ArrayList<Animator> animatorArrayList = new ArrayList<>();
-        animatorSet.playTogether();
+        for (int i = 0; i < paletteArrayList.size(); i++){
+            Animator animator = createExpandAnimator(
+                    paletteArrayList.get(i).getView(), paletteArrayList.get(i).getOffset());
+            animatorArrayList.add(animator);
+        }
+        animatorSet.playTogether(animatorArrayList);
+        animatorSet.start();
+    }
+
+    private void collapseFAB(){
+
     }
 }
 
