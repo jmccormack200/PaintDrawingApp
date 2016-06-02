@@ -65,6 +65,7 @@ public class DrawView extends View {
 
     @Override
     protected void onDraw(Canvas canvas){
+
         canvas.drawPath(path, paint);
     }
 
@@ -80,6 +81,7 @@ public class DrawView extends View {
 
         switch(event.getAction()){
             case MotionEvent.ACTION_DOWN:
+                path = new Path();
                 path.moveTo(eventX, eventY);
             case MotionEvent.ACTION_MOVE:
             case MotionEvent.ACTION_UP:
