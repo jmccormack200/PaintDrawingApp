@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
     public void onClickBrushSize(View view){
         for (int i = 0; i < brushContainer.getChildCount(); i++){
             if (brushContainer.getChildAt(i) == view){
-                mDrawView.changeStrokeWidth(i * 4.0f);
+                mDrawView.changeStrokeWidth(i * 8.0f);
             }
         }
         onClickBrush(view);

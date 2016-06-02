@@ -6,11 +6,10 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.util.AttributeSet;
-import android.util.Pair;
 import android.view.MotionEvent;
 import android.view.View;
 
-import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.ArrayList;
 
 /**
  * Created by jmack on 5/31/16.
@@ -22,7 +21,7 @@ public class DrawView extends View {
     private int color = Color.BLACK;
     private float stroke = 4f;
 
-    public ConcurrentLinkedQueue<Pair> queue = new ConcurrentLinkedQueue<>();
+    private ArrayList<PaintPath> paintPaths = new ArrayList<>();
 
 
     public DrawView(Context context) {
@@ -65,12 +64,15 @@ public class DrawView extends View {
 
     @Override
     protected void onDraw(Canvas canvas){
-
+        for (PaintPath paintPath : paintPaths){
+            canvas.drawPath(paintPath.path, paintPath.paint);
+        }
         canvas.drawPath(path, paint);
     }
 
     public void clear(){
         path.reset();
+        paintPaths.remove(paintPaths.size()-1);
         invalidate();
     }
 
@@ -81,10 +83,8 @@ public class DrawView extends View {
 
         switch(event.getAction()){
             case MotionEvent.ACTION_DOWN:
-                path = new Path();
                 path.moveTo(eventX, eventY);
             case MotionEvent.ACTION_MOVE:
-            case MotionEvent.ACTION_UP:
                 int historySize = event.getHistorySize();
                 for (int i = 0; i < historySize; i++) {
                     float historicalX = event.getHistoricalX(i);
@@ -92,6 +92,19 @@ public class DrawView extends View {
                     path.lineTo(historicalX, historicalY);
                 }
                 path.lineTo(eventX, eventY);
+                break;
+            case MotionEvent.ACTION_UP:
+                historySize = event.getHistorySize();
+                for (int i = 0; i < historySize; i++) {
+                    float historicalX = event.getHistoricalX(i);
+                    float historicalY = event.getHistoricalY(i);
+                    path.lineTo(historicalX, historicalY);
+                }
+                path.lineTo(eventX, eventY);
+                paintPaths.add(new PaintPath(paint, path));
+                paint = new Paint();
+                path = new Path();
+                setupDrawView();
                 break;
             default:
                 return false;
