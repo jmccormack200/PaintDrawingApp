@@ -11,6 +11,7 @@
         android:id="@+id/brush_action_6"
         app:backgroundTint="@color/Grey"
         android:src="@drawable/circle_1"
+        android:scaleType="center"
         app:fabSize="mini"
         android:layout_above="@+id/brush_action_5"
         android:layout_alignEnd="@+id/brush"
@@ -19,12 +20,14 @@
         android:layout_width="wrap_content"
         app:rippleColor="@color/White"
         android:layout_margin="8dp"
+        app:borderWidth="0dp"
         />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/brush_action_5"
         app:backgroundTint="@color/Grey"
         android:src="@drawable/circle_2"
+        android:scaleType="center"
         app:fabSize="mini"
         android:layout_above="@+id/brush_action_4"
         android:layout_alignEnd="@+id/brush"
@@ -38,6 +41,7 @@
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/brush_action_4"
         app:backgroundTint="@color/Grey"
+        android:scaleType="center"
         android:src="@drawable/circle_3"
         app:fabSize="mini"
         android:layout_above="@+id/brush_action_3"
@@ -52,6 +56,7 @@
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/brush_action_3"
         app:backgroundTint="@color/Grey"
+        android:scaleType="center"
         android:src="@drawable/circle_4"
         app:fabSize="mini"
         android:layout_above="@+id/brush_action_2"
@@ -66,6 +71,7 @@
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/brush_action_2"
         android:src="@drawable/circle_5"
+        android:scaleType="center"
         app:backgroundTint="@color/Grey"
         app:fabSize="mini"
         android:layout_above="@+id/brush_action_1"
@@ -80,6 +86,7 @@
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/brush_action_1"
         android:src="@drawable/circle_6"
+        android:scaleType="center"
         app:backgroundTint="@color/Grey"
         app:fabSize="mini"
         android:layout_above="@+id/brush"
@@ -94,6 +101,7 @@
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/brush"
         android:src="@drawable/ic_brush_black_24dp"
+        android:scaleType="center"
         app:fabSize="normal"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"

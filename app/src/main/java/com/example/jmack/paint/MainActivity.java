@@ -22,11 +22,17 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean collapsePal = false;
     private ViewGroup paletteContainer;
+    private ArrayList<ViewOffsetHolder> paletteArrayList = new ArrayList<>();
     private View rootPalette;
+
+    private boolean collapseBrush = false;
+    private ViewGroup brushContainer;
+    private ArrayList<ViewOffsetHolder> getPaletteArrayList = new ArrayList<>();
+    private View rootBrush;
 
     //TODO: Convert this to a list
 
-    private ArrayList<ViewOffsetHolder> paletteArrayList = new ArrayList<>();
+
 
 
     @Override
@@ -87,12 +93,12 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void onClickExpand(View view){
+    public void onClickPalette(View view){
         collapsePal = !collapsePal;
         if (collapsePal) {
-            expandFAB();
+            expandFAB(paletteArrayList);
         } else {
-            collapseFAB();
+            collapseFAB(paletteArrayList);
         }
     }
 
@@ -108,27 +114,30 @@ public class MainActivity extends AppCompatActivity {
                 .setDuration(getResources().getInteger(android.R.integer.config_mediumAnimTime));
     }
 
-    private void expandFAB(){
+    //TODO It should be possible to collapse these two into one function
+    private void expandFAB(ArrayList<ViewOffsetHolder> viewOffsetHolderArrayList){
         AnimatorSet animatorSet = new AnimatorSet();
 
 
         ArrayList<Animator> animatorArrayList = new ArrayList<>();
-        for (int i = 0; i < paletteArrayList.size(); i++){
+        for (int i = 0; i < viewOffsetHolderArrayList.size(); i++){
             Animator animator = createExpandAnimator(
-                    paletteArrayList.get(i).getView(), paletteArrayList.get(i).getOffset());
+                    viewOffsetHolderArrayList.get(i).getView(),
+                    viewOffsetHolderArrayList.get(i).getOffset());
             animatorArrayList.add(animator);
         }
         animatorSet.playTogether(animatorArrayList);
         animatorSet.start();
     }
 
-    private void collapseFAB(){
+    private void collapseFAB(ArrayList<ViewOffsetHolder> viewOffsetHolderArrayList){
         AnimatorSet animatorSet = new AnimatorSet();
 
         ArrayList<Animator> animatorArrayList = new ArrayList<>();
-        for (int i = 0; i < paletteArrayList.size(); i++){
+        for (int i = 0; i < viewOffsetHolderArrayList.size(); i++){
             Animator animator = createCollapseAnimator(
-                    paletteArrayList.get(i).getView(), paletteArrayList.get(i).getOffset()
+                    viewOffsetHolderArrayList.get(i).getView(),
+                    viewOffsetHolderArrayList.get(i).getOffset()
             );
             animatorArrayList.add(animator);
         }
