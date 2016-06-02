@@ -14,10 +14,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_gravity="bottom|end">
+        android:layout_gravity="bottom|end"
+        >
 
         <include layout="@layout/sdpallete"
-            android:id="@+id/sdpallete"/>
+            android:id="@+id/sdpallete"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="8dp"/>
 
         <include layout="@layout/sdbrush"
             android:id="@+id/sdbrush"

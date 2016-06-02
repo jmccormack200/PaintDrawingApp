@@ -72,7 +72,9 @@ public class DrawView extends View {
 
     public void clear(){
         path.reset();
-        paintPaths.remove(paintPaths.size()-1);
+        if (paintPaths.size() > 0) {
+            paintPaths.remove(paintPaths.size() - 1);
+        }
         invalidate();
     }
 
