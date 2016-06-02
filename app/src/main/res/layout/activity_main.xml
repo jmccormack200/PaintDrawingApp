@@ -21,8 +21,7 @@
             android:id="@+id/sdpallete"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_alignParentStart="true"
-            android:layout_marginBottom="8dp"/>
+            android:layout_alignParentStart="true" />
 
         <include layout="@layout/sdbrush"
             android:id="@+id/sdbrush"
@@ -35,11 +34,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="clearAll"
-            android:layout_marginEnd="8dp"
             android:src="@drawable/ic_undo_black_24dp"
             android:id="@+id/view"
-            android:layout_alignBottom="@+id/sdbrush"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignParentEnd="true"
+            android:layout_alignBottom="@id/sdpallete"
+            android:layout_margin="8dp"
+            />
 
     </RelativeLayout>
 
