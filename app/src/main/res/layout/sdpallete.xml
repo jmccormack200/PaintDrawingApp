@@ -17,6 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         app:rippleColor="@color/White"
+        android:onClick="onClickColor"
         android:layout_margin="8dp"
         />
 
@@ -29,6 +30,7 @@
         android:contentDescription="@null"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
+        android:onClick="onClickColor"
         android:layout_margin="8dp"
         app:rippleColor="@color/White"
         />
@@ -43,6 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:layout_margin="8dp"
+        android:onClick="onClickColor"
         app:rippleColor="@color/White"
         />
 
@@ -56,6 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:layout_margin="8dp"
+        android:onClick="onClickColor"
         app:rippleColor="@color/White"
         />
 
@@ -69,6 +73,7 @@
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:layout_margin="8dp"
+        android:onClick="onClickColor"
         app:rippleColor="@color/White"
         />
 
@@ -83,6 +88,7 @@
         android:layout_width="wrap_content"
         android:layout_margin="8dp"
         tools:targetApi="lollipop"
+        android:onClick="onClickColor"
         app:rippleColor="@color/White"/>
 
     <android.support.design.widget.FloatingActionButton
@@ -96,6 +102,6 @@
         android:contentDescription="@null"
         android:visibility="visible"
         android:layout_margin="8dp"
-        android:onClick="onClickExpand"/>
+        android:onClick="onClickPalette"/>
 
 </RelativeLayout>

@@ -6,7 +6,6 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.util.Pair;
 import android.view.MotionEvent;
 import android.view.View;
@@ -20,6 +19,8 @@ public class DrawView extends View {
 
     private Path path = new Path();
     private Paint paint = new Paint();
+    private int color = Color.BLACK;
+    private float stroke = 4f;
 
     public ConcurrentLinkedQueue<Pair> queue = new ConcurrentLinkedQueue<>();
 
@@ -44,12 +45,22 @@ public class DrawView extends View {
         setupDrawView();
     }
 
+    public void changeColor(int color){
+        this.color = color;
+        setupDrawView();
+    }
+
+    public void changeStrokeWidth(float size){
+        this.stroke = size;
+        setupDrawView();
+    }
+
     private void setupDrawView(){
         paint.setAntiAlias(true);
-        paint.setColor(Color.BLACK);
+        paint.setColor(color);
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeJoin(Paint.Join.ROUND);
-        paint.setStrokeWidth(5f);
+        paint.setStrokeWidth(stroke);
     }
 
     @Override

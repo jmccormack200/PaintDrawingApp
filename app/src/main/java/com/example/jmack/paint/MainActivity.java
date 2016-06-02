@@ -3,6 +3,7 @@ package com.example.jmack.paint;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -23,12 +24,10 @@ public class MainActivity extends AppCompatActivity {
     private boolean collapsePal = false;
     private ViewGroup paletteContainer;
     private ArrayList<ViewOffsetHolder> paletteArrayList = new ArrayList<>();
-    private View rootPalette;
 
     private boolean collapseBrush = false;
     private ViewGroup brushContainer;
-    private ArrayList<ViewOffsetHolder> getPaletteArrayList = new ArrayList<>();
-    private View rootBrush;
+    private ArrayList<ViewOffsetHolder> brushArrayList = new ArrayList<>();
 
     //TODO: Convert this to a list
 
@@ -49,8 +48,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         paletteContainer = (ViewGroup) findViewById(R.id.sdpallete);
-        rootPalette = paletteContainer.getChildAt(paletteContainer.getChildCount() -1);
         initCollapseFAB(paletteContainer, paletteArrayList);
+
+        brushContainer = (ViewGroup) findViewById(R.id.sdbrush);
+        initCollapseFAB(brushContainer, brushArrayList);
 
 
         mDrawView = (DrawView) findViewById(R.id.drawview);
@@ -102,6 +103,31 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void onClickBrush(View view){
+        collapseBrush = !collapseBrush;
+        if (collapseBrush) {
+            expandFAB(brushArrayList);
+        } else {
+            collapseFAB(brushArrayList);
+        }
+    }
+
+    public void onClickColor(View view){
+        ColorStateList colorStateList = view.getBackgroundTintList();
+        mDrawView.changeColor(colorStateList.getDefaultColor());
+        onClickPalette(view);
+    }
+
+    //TODO: I'd like to take another look at this as the solution feels hacked together.
+    public void onClickBrushSize(View view){
+        for (int i = 0; i < brushContainer.getChildCount(); i++){
+            if (brushContainer.getChildAt(i) == view){
+                mDrawView.changeStrokeWidth(i * 4.0f);
+            }
+        }
+        onClickBrush(view);
+    }
+
     private static final String TRANSLATION_Y = "translationY";
 
     private Animator createCollapseAnimator(View view, float offset){
@@ -144,6 +170,8 @@ public class MainActivity extends AppCompatActivity {
         animatorSet.playTogether(animatorArrayList);
         animatorSet.start();
     }
+
+
 }
 
 

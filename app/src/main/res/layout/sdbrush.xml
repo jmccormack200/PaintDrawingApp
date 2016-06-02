@@ -21,6 +21,7 @@
         app:rippleColor="@color/White"
         android:layout_margin="8dp"
         app:borderWidth="0dp"
+        android:onClick="onClickBrushSize"
         />
 
     <android.support.design.widget.FloatingActionButton
@@ -36,6 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_margin="8dp"
         app:rippleColor="@color/White"
+        android:onClick="onClickBrushSize"
         />
 
     <android.support.design.widget.FloatingActionButton
@@ -51,6 +53,7 @@
         android:layout_width="wrap_content"
         android:layout_margin="8dp"
         app:rippleColor="@color/White"
+        android:onClick="onClickBrushSize"
         />
 
     <android.support.design.widget.FloatingActionButton
@@ -66,6 +69,7 @@
         android:layout_width="wrap_content"
         android:layout_margin="8dp"
         app:rippleColor="@color/White"
+        android:onClick="onClickBrushSize"
         />
 
     <android.support.design.widget.FloatingActionButton
@@ -81,6 +85,7 @@
         android:layout_width="wrap_content"
         android:layout_margin="8dp"
         app:rippleColor="@color/White"
+        android:onClick="onClickBrushSize"
         />
 
     <android.support.design.widget.FloatingActionButton
@@ -96,7 +101,8 @@
         android:layout_width="wrap_content"
         android:layout_margin="8dp"
         tools:targetApi="lollipop"
-        app:rippleColor="@color/White"/>
+        app:rippleColor="@color/White"
+        android:onClick="onClickBrushSize"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/brush"
@@ -110,6 +116,6 @@
         android:contentDescription="@null"
         android:visibility="visible"
         android:layout_margin="8dp"
-        android:onClick="onClickExpand"/>
+        android:onClick="onClickBrush"/>
 
 </RelativeLayout>
