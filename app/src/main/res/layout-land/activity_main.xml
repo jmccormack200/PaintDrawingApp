@@ -14,32 +14,32 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_gravity="bottom|end"
+        android:layout_gravity="top|start"
         >
 
         <include layout="@layout/speeddialpalette"
             android:id="@+id/sdpallete"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_alignParentStart="true" />
 
         <include layout="@layout/speeddialbrush"
             android:id="@+id/sdbrush"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/sdpallete"
-            android:layout_toEndOf="@+id/sdpallete" />
+            android:layout_below="@id/sdpallete"/>
+
+    </RelativeLayout>
+
 
         <android.support.design.widget.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="clearAll"
             android:src="@drawable/ic_undo_black_24dp"
-            android:id="@+id/view"
-            android:layout_alignParentEnd="true"
-            android:layout_alignBottom="@id/sdpallete"
             android:layout_margin="@dimen/normal_padding"
+            android:layout_gravity="bottom|end"
             />
 
-    </RelativeLayout>
+
 </FrameLayout>

@@ -83,33 +83,26 @@ public class DrawView extends View {
         float eventX = event.getX();
         float eventY = event.getY();
 
-        switch(event.getAction()){
-            case MotionEvent.ACTION_DOWN:
-                path.moveTo(eventX, eventY);
-            case MotionEvent.ACTION_MOVE:
-                int historySize = event.getHistorySize();
-                for (int i = 0; i < historySize; i++) {
-                    float historicalX = event.getHistoricalX(i);
-                    float historicalY = event.getHistoricalY(i);
-                    path.lineTo(historicalX, historicalY);
-                }
-                path.lineTo(eventX, eventY);
-                break;
-            case MotionEvent.ACTION_UP:
-                historySize = event.getHistorySize();
-                for (int i = 0; i < historySize; i++) {
-                    float historicalX = event.getHistoricalX(i);
-                    float historicalY = event.getHistoricalY(i);
-                    path.lineTo(historicalX, historicalY);
-                }
-                path.lineTo(eventX, eventY);
-                paintPaths.add(new PaintPath(paint, path));
-                paint = new Paint();
-                path = new Path();
-                setupDrawView();
-                break;
-            default:
-                return false;
+        int action = event.getAction();
+
+        if (action == MotionEvent.ACTION_DOWN){
+            path.moveTo(eventX, eventY);
+        } else if (action == MotionEvent.ACTION_UP || action == MotionEvent.ACTION_MOVE) {
+            int historySize = event.getHistorySize();
+            for (int i = 0; i < historySize; i++) {
+                float historicalX = event.getHistoricalX(i);
+                float historicalY = event.getHistoricalY(i);
+                path.lineTo(historicalX, historicalY);
+            }
+            path.lineTo(eventX, eventY);
+        } else {
+            return false;
+        }
+        if (action == MotionEvent.ACTION_UP){
+            paintPaths.add(new PaintPath(paint, path));
+            paint = new Paint();
+            path = new Path();
+            setupDrawView();
         }
         invalidate();
         return true;

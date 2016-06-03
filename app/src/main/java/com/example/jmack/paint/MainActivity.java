@@ -29,10 +29,8 @@ public class MainActivity extends AppCompatActivity {
     private ViewGroup brushContainer;
     private ArrayList<ViewOffsetHolder> brushArrayList = new ArrayList<>();
 
-    //TODO: Convert this to a list
-
-
-
+    private static final float strokeWidth = 8.0f;
+    private static final String TRANSLATION_Y = "translationY";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +79,6 @@ public class MainActivity extends AppCompatActivity {
             public boolean onPreDraw(){
                 fabContainer.getViewTreeObserver().removeOnPreDrawListener(this);
                 for(int i = (fabContainer.getChildCount() - 1); i > 0; i--){
-
                     float offset = fabContainer.getChildAt(i).getY()
                             - fabContainer.getChildAt(i - 1).getY();
                     fabContainer.getChildAt(i - 1).setTranslationY(offset);
@@ -122,13 +119,11 @@ public class MainActivity extends AppCompatActivity {
     public void onClickBrushSize(View view){
         for (int i = 0; i < brushContainer.getChildCount(); i++){
             if (brushContainer.getChildAt(i) == view){
-                mDrawView.changeStrokeWidth(i * 8.0f);
+                mDrawView.changeStrokeWidth(i * strokeWidth);
             }
         }
         onClickBrush(view);
     }
-
-    private static final String TRANSLATION_Y = "translationY";
 
     private Animator createCollapseAnimator(View view, float offset){
         return ObjectAnimator.ofFloat(view, TRANSLATION_Y, 0, offset)
