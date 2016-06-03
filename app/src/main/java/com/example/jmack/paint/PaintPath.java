@@ -30,4 +30,5 @@ public class PaintPath {
     public void setPaint(Paint paint){
         this.paint = paint;
     }
+
 }

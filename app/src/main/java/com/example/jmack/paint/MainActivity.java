@@ -150,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private Animator createExpandAnimator(View view, float offset){
-        return ObjectAnimator.ofFloat(view, mTranslation, offset, 1)
+        return ObjectAnimator.ofFloat(view, mTranslation, offset, 0)
                 .setDuration(getResources().getInteger(android.R.integer.config_mediumAnimTime));
     }
 
@@ -183,7 +183,6 @@ public class MainActivity extends AppCompatActivity {
         animatorSet.playTogether(animatorArrayList);
         animatorSet.start();
     }
-
 
 }
 

@@ -21,7 +21,7 @@ public class DrawView extends View {
     private int color = Color.BLACK;
     private float stroke = 4f;
 
-    private ArrayList<PaintPath> paintPaths = new ArrayList<>();
+    public ArrayList<PaintPath> paintPaths = new ArrayList<>();
 
 
     public DrawView(Context context) {
