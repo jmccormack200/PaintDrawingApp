@@ -4,6 +4,8 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
+    <color name="clickColor">#FFFFFF</color>
+
     <color name="Red">#FF0000</color>
     <color name="Green">#00FF00</color>
     <color name="Blue">#0000FF</color>

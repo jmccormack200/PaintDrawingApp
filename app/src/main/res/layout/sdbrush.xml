@@ -5,7 +5,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginBottom="@dimen/activity_vertical_margin"
-    android:paddingBottom="8dp"
+    android:paddingBottom="@dimen/normal_padding"
     android:clipToPadding="false"
     android:id="@+id/brush_parent">
 
@@ -20,8 +20,8 @@
         android:contentDescription="@null"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        app:rippleColor="@color/White"
-        android:layout_margin="8dp"
+        app:rippleColor="@color/clickColor"
+        android:layout_margin="@dimen/normal_padding"
         app:borderWidth="0dp"
         android:onClick="onClickBrushSize"
         />
@@ -37,8 +37,8 @@
         android:contentDescription="@null"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:layout_margin="8dp"
-        app:rippleColor="@color/White"
+        android:layout_margin="@dimen/normal_padding"
+        app:rippleColor="@color/clickColor"
         android:onClick="onClickBrushSize"
         />
 
@@ -53,8 +53,8 @@
         android:contentDescription="@null"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:layout_margin="8dp"
-        app:rippleColor="@color/White"
+        android:layout_margin="@dimen/normal_padding"
+        app:rippleColor="@color/clickColor"
         android:onClick="onClickBrushSize"
         />
 
@@ -69,8 +69,8 @@
         android:contentDescription="@null"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:layout_margin="8dp"
-        app:rippleColor="@color/White"
+        android:layout_margin="@dimen/normal_padding"
+        app:rippleColor="@color/clickColor"
         android:onClick="onClickBrushSize"
         />
 
@@ -85,8 +85,8 @@
         android:contentDescription="@null"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:layout_margin="8dp"
-        app:rippleColor="@color/White"
+        android:layout_margin="@dimen/normal_padding"
+        app:rippleColor="@color/clickColor"
         android:onClick="onClickBrushSize"
         />
 
@@ -101,9 +101,9 @@
         android:contentDescription="@null"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_margin="@dimen/normal_padding"
         tools:targetApi="lollipop"
-        app:rippleColor="@color/White"
+        app:rippleColor="@color/clickColor"
         android:onClick="onClickBrushSize"/>
 
     <android.support.design.widget.FloatingActionButton
