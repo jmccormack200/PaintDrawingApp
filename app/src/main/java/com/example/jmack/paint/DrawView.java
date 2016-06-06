@@ -44,17 +44,17 @@ public class DrawView extends View {
         setupDrawView();
     }
 
-    public void changeColor(int color){
+    public void changeColor(int color) {
         this.color = color;
         setupDrawView();
     }
 
-    public void changeStrokeWidth(float size){
+    public void changeStrokeWidth(float size) {
         this.stroke = size;
         setupDrawView();
     }
 
-    private void setupDrawView(){
+    private void setupDrawView() {
         paint.setAntiAlias(true);
         paint.setColor(color);
         paint.setStyle(Paint.Style.STROKE);
@@ -63,14 +63,14 @@ public class DrawView extends View {
     }
 
     @Override
-    protected void onDraw(Canvas canvas){
-        for (PaintPath paintPath : paintPaths){
+    protected void onDraw(Canvas canvas) {
+        for (PaintPath paintPath : paintPaths) {
             canvas.drawPath(paintPath.path, paintPath.paint);
         }
         canvas.drawPath(path, paint);
     }
 
-    public void clear(){
+    public void clear() {
         path.reset();
         if (paintPaths.size() > 0) {
             paintPaths.remove(paintPaths.size() - 1);
@@ -79,13 +79,13 @@ public class DrawView extends View {
     }
 
     @Override
-    public boolean onTouchEvent(MotionEvent event){
+    public boolean onTouchEvent(MotionEvent event) {
         float eventX = event.getX();
         float eventY = event.getY();
 
         int action = event.getAction();
 
-        if (action == MotionEvent.ACTION_DOWN){
+        if (action == MotionEvent.ACTION_DOWN) {
             path.moveTo(eventX, eventY);
         } else if (action == MotionEvent.ACTION_UP || action == MotionEvent.ACTION_MOVE) {
             int historySize = event.getHistorySize();
@@ -98,7 +98,7 @@ public class DrawView extends View {
         } else {
             return false;
         }
-        if (action == MotionEvent.ACTION_UP){
+        if (action == MotionEvent.ACTION_UP) {
             paintPaths.add(new PaintPath(paint, path));
             paint = new Paint();
             path = new Path();

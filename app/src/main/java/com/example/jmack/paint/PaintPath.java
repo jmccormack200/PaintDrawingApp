@@ -10,24 +10,24 @@ public class PaintPath {
     public Paint paint;
     public Path path;
 
-    public PaintPath(Paint paint, Path path){
+    public PaintPath(Paint paint, Path path) {
         this.paint = paint;
         this.path = path;
     }
 
-    public Path getPath(){
+    public Path getPath() {
         return this.path;
     }
 
-    public Paint getPaint(){
+    public Paint getPaint() {
         return this.paint;
     }
 
-    public void setPath(Path path){
+    public void setPath(Path path) {
         this.path = path;
     }
 
-    public void setPaint(Paint paint){
+    public void setPaint(Paint paint) {
         this.paint = paint;
     }
 

@@ -42,8 +42,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         styledAttributes = this.getTheme().obtainStyledAttributes(
-                new int[]{
-                        android.R.attr.actionBarSize});
+                new int[] {
+                        android.R.attr.actionBarSize });
         mActionBarSize = (int) styledAttributes.getDimension(0, 0);
 
 
