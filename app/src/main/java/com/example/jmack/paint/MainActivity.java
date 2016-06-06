@@ -5,7 +5,6 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.res.ColorStateList;
 import android.content.res.Configuration;
-import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -27,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     private DrawView mDrawView;
 
-    public static final boolean COLLAPSE = false;
+    private static final boolean COLLAPSE = true;
     private static final float strokeWidth = 8.0f;
     private static final String TRANSLATION_Y = "translationY";
     private static final String TRANSLATION_X = "translationX";
@@ -46,11 +45,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        TypedArray styledAttributes = this.getTheme().obtainStyledAttributes(
-                new int[] {
-                        android.R.attr.actionBarSize });
-
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
@@ -129,8 +123,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private Animator collapseExpandAnimator(View view, float offset, boolean collapse) {
-        float start = (collapse == COLLAPSE) ? 0.0f : offset;
-        float end = (collapse == COLLAPSE) ? offset : 0.0f;
+        float start = (collapse) ? 0.0f : offset;
+        float end = (collapse) ? offset : 0.0f;
         return ObjectAnimator.ofFloat(view, mTranslation, start, end)
                 .setDuration(getResources().getInteger(android.R.integer.config_mediumAnimTime));
     }
