@@ -10,7 +10,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
-import android.view.Window;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -46,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
 
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
@@ -142,6 +140,10 @@ public class MainActivity extends AppCompatActivity {
         }
         animatorSet.playTogether(animatorArrayList);
         animatorSet.start();
+    }
+
+    public void clearAll(View view){
+        mDrawView.clear();
     }
 
 }
