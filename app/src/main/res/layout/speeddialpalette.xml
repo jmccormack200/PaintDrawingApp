@@ -2,107 +2,102 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/palette_parent"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginBottom="@dimen/activity_vertical_margin"
-    android:id="@+id/palette_parent"
     android:clipToPadding="false"
     android:padding="@dimen/normal_padding">
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/palette_action_6"
-        app:backgroundTint="@color/Black"
-        app:fabSize="mini"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_above="@+id/palette_action_5"
         android:layout_alignEnd="@+id/palette"
-        android:contentDescription="@null"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        app:rippleColor="@color/clickColor"
-        android:onClick="onClickColor"
         android:layout_margin="@dimen/normal_padding"
-        />
+        android:contentDescription="@null"
+        android:onClick="onClickColor"
+        app:backgroundTint="@color/Black"
+        app:fabSize="mini"
+        app:rippleColor="@color/clickColor" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/palette_action_5"
-        app:backgroundTint="@color/Blue"
-        app:fabSize="mini"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_above="@+id/palette_action_4"
         android:layout_alignEnd="@+id/palette"
-        android:contentDescription="@null"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:onClick="onClickColor"
         android:layout_margin="@dimen/normal_padding"
-        app:rippleColor="@color/clickColor"
-        />
+        android:contentDescription="@null"
+        android:onClick="onClickColor"
+        app:backgroundTint="@color/Blue"
+        app:fabSize="mini"
+        app:rippleColor="@color/clickColor" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/palette_action_4"
-        app:backgroundTint="@color/Aqua"
-        app:fabSize="mini"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_above="@+id/palette_action_3"
         android:layout_alignEnd="@+id/palette"
-        android:contentDescription="@null"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
         android:layout_margin="@dimen/normal_padding"
+        android:contentDescription="@null"
         android:onClick="onClickColor"
-        app:rippleColor="@color/clickColor"
-        />
+        app:backgroundTint="@color/Aqua"
+        app:fabSize="mini"
+        app:rippleColor="@color/clickColor" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/palette_action_3"
-        app:backgroundTint="@color/Green"
-        app:fabSize="mini"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_above="@+id/palete_action_2"
         android:layout_alignEnd="@+id/palette"
-        android:contentDescription="@null"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
         android:layout_margin="@dimen/normal_padding"
+        android:contentDescription="@null"
         android:onClick="onClickColor"
-        app:rippleColor="@color/clickColor"
-        />
+        app:backgroundTint="@color/Green"
+        app:fabSize="mini"
+        app:rippleColor="@color/clickColor" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/palete_action_2"
-        app:backgroundTint="@color/Red"
-        app:fabSize="mini"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_above="@+id/palete_action_1"
         android:layout_alignEnd="@+id/palette"
-        android:contentDescription="@null"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
         android:layout_margin="@dimen/normal_padding"
+        android:contentDescription="@null"
         android:onClick="onClickColor"
-        app:rippleColor="@color/clickColor"
-        />
+        app:backgroundTint="@color/Red"
+        app:fabSize="mini"
+        app:rippleColor="@color/clickColor" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/palete_action_1"
-        app:backgroundTint="@color/Yellow"
-        app:fabSize="mini"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_above="@+id/palette"
         android:layout_alignEnd="@+id/palette"
-        android:contentDescription="@null"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
         android:layout_margin="@dimen/normal_padding"
-        tools:targetApi="lollipop"
+        android:contentDescription="@null"
         android:onClick="onClickColor"
-        app:rippleColor="@color/clickColor"/>
+        app:backgroundTint="@color/Yellow"
+        app:fabSize="mini"
+        app:rippleColor="@color/clickColor"
+        tools:targetApi="lollipop" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/palette"
-        android:src="@drawable/ic_palette_black_24dp"
-        app:fabSize="normal"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_height="wrap_content"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
         android:contentDescription="@null"
+        android:onClick="onClickPalette"
+        android:src="@drawable/ic_palette_black_24dp"
         android:visibility="visible"
-        android:onClick="onClickPalette"/>
+        app:fabSize="normal" />
 
 </RelativeLayout>

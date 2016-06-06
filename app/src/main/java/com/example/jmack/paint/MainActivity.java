@@ -44,13 +44,13 @@ public class MainActivity extends AppCompatActivity {
         styledAttributes = this.getTheme().obtainStyledAttributes(
                 new int[]{
                         android.R.attr.actionBarSize});
-        mActionBarSize = (int) styledAttributes.getDimension(0,0);
+        mActionBarSize = (int) styledAttributes.getDimension(0, 0);
 
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
 
-        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
             mTranslation = TRANSLATION_Y;
         } else {
             mTranslation = TRANSLATION_X;
@@ -67,49 +67,49 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onResume(){
+    public void onResume() {
         super.onResume();
     }
 
     @Override
-    public void onPause(){
+    public void onPause() {
         super.onPause();
     }
 
-    public void clearAll(View view){
+    public void clearAll(View view) {
         mDrawView.clear();
     }
 
     public void initCollapseFAB(final ViewGroup fabContainer,
-                                final ArrayList<ViewOffsetHolder> fabArrayList){
+                                final ArrayList<ViewOffsetHolder> fabArrayList) {
 
         fabContainer.getViewTreeObserver()
-                .addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener(){
-            @Override
-            public boolean onPreDraw(){
-                fabContainer.getViewTreeObserver().removeOnPreDrawListener(this);
+                .addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+                    @Override
+                    public boolean onPreDraw() {
+                        fabContainer.getViewTreeObserver().removeOnPreDrawListener(this);
 
-                for(int i = (fabContainer.getChildCount() - 1); i > 0; i--){
-                    View button = fabContainer.getChildAt(i);
-                    View prevButton = fabContainer.getChildAt(i - 1);
-                    float offset;
-                    if (mTranslation == TRANSLATION_Y) {
-                        offset = button.getY() - prevButton.getY();
-                        prevButton.setTranslationY(offset);
-                    } else {
-                        offset = button.getX() - prevButton.getX();
-                        prevButton.setTranslationX(offset);
+                        for (int i = (fabContainer.getChildCount() - 1); i > 0; i--) {
+                            View button = fabContainer.getChildAt(i);
+                            View prevButton = fabContainer.getChildAt(i - 1);
+                            float offset;
+                            if (mTranslation == TRANSLATION_Y) {
+                                offset = button.getY() - prevButton.getY();
+                                prevButton.setTranslationY(offset);
+                            } else {
+                                offset = button.getX() - prevButton.getX();
+                                prevButton.setTranslationX(offset);
+                            }
+                            ViewOffsetHolder viewOffsetHolder =
+                                    new ViewOffsetHolder(fabContainer.getChildAt(i - 1), offset);
+                            fabArrayList.add(viewOffsetHolder);
+                        }
+                        return true;
                     }
-                    ViewOffsetHolder viewOffsetHolder =
-                            new ViewOffsetHolder(fabContainer.getChildAt(i - 1), offset);
-                    fabArrayList.add(viewOffsetHolder);
-                }
-                return true;
-            }
-        });
+                });
     }
 
-    public void onClickPalette(View view){
+    public void onClickPalette(View view) {
         collapsePal = !collapsePal;
         if (collapsePal) {
             expandFAB(paletteArrayList);
@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void onClickBrush(View view){
+    public void onClickBrush(View view) {
         collapseBrush = !collapseBrush;
         if (collapseBrush) {
             expandFAB(brushArrayList);
@@ -127,39 +127,39 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void onClickColor(View view){
+    public void onClickColor(View view) {
         ColorStateList colorStateList = view.getBackgroundTintList();
         mDrawView.changeColor(colorStateList.getDefaultColor());
         onClickPalette(view);
     }
 
     //TODO: I'd like to take another look at this as the solution feels hacked together.
-    public void onClickBrushSize(View view){
-        for (int i = 0; i < brushContainer.getChildCount(); i++){
-            if (brushContainer.getChildAt(i) == view){
+    public void onClickBrushSize(View view) {
+        for (int i = 0; i < brushContainer.getChildCount(); i++) {
+            if (brushContainer.getChildAt(i) == view) {
                 mDrawView.changeStrokeWidth(i * strokeWidth);
             }
         }
         onClickBrush(view);
     }
 
-    private Animator createCollapseAnimator(View view, float offset){
+    private Animator createCollapseAnimator(View view, float offset) {
         Log.v("Test", mTranslation);
         return ObjectAnimator.ofFloat(view, mTranslation, 0, offset)
                 .setDuration(getResources().getInteger(android.R.integer.config_mediumAnimTime));
     }
 
-    private Animator createExpandAnimator(View view, float offset){
+    private Animator createExpandAnimator(View view, float offset) {
         return ObjectAnimator.ofFloat(view, mTranslation, offset, 0)
                 .setDuration(getResources().getInteger(android.R.integer.config_mediumAnimTime));
     }
 
     //TODO It should be possible to collapse these two into one function
-    private void expandFAB(ArrayList<ViewOffsetHolder> viewOffsetHolderArrayList){
+    private void expandFAB(ArrayList<ViewOffsetHolder> viewOffsetHolderArrayList) {
         AnimatorSet animatorSet = new AnimatorSet();
 
         ArrayList<Animator> animatorArrayList = new ArrayList<>();
-        for (int i = 0; i < viewOffsetHolderArrayList.size(); i++){
+        for (int i = 0; i < viewOffsetHolderArrayList.size(); i++) {
             Animator animator = createExpandAnimator(
                     viewOffsetHolderArrayList.get(i).getView(),
                     viewOffsetHolderArrayList.get(i).getOffset());
@@ -169,11 +169,11 @@ public class MainActivity extends AppCompatActivity {
         animatorSet.start();
     }
 
-    private void collapseFAB(ArrayList<ViewOffsetHolder> viewOffsetHolderArrayList){
+    private void collapseFAB(ArrayList<ViewOffsetHolder> viewOffsetHolderArrayList) {
         AnimatorSet animatorSet = new AnimatorSet();
 
         ArrayList<Animator> animatorArrayList = new ArrayList<>();
-        for (int i = 0; i < viewOffsetHolderArrayList.size(); i++){
+        for (int i = 0; i < viewOffsetHolderArrayList.size(); i++) {
             Animator animator = createCollapseAnimator(
                     viewOffsetHolderArrayList.get(i).getView(),
                     viewOffsetHolderArrayList.get(i).getOffset()
@@ -183,6 +183,7 @@ public class MainActivity extends AppCompatActivity {
         animatorSet.playTogether(animatorArrayList);
         animatorSet.start();
     }
+
 
 }
 
