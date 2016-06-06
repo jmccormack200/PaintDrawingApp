@@ -142,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
         animatorSet.start();
     }
 
-    public void clearAll(View view){
+    public void undoLastLineDrawn(View view){
         mDrawView.clear();
     }
 

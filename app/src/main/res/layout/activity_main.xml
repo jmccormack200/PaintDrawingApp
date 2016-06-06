@@ -39,7 +39,7 @@
             android:layout_alignBottom="@id/sdpallete"
             android:layout_alignParentEnd="true"
             android:layout_margin="@dimen/normal_padding"
-            android:onClick="clearAll"
+            android:onClick="undoLastLineDrawn"
             android:src="@drawable/ic_undo_black_24dp"
             />
 
