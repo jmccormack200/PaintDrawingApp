@@ -30,10 +30,10 @@ public class MainActivity extends AppCompatActivity {
 
 
     private boolean collapsePal = COLLAPSE;
-    private ArrayList<ViewOffsetHolder> paletteArrayList = new ArrayList<>();
+    private ArrayList<ViewOffsetPair> paletteArrayList = new ArrayList<>();
 
     private boolean collapseBrush = COLLAPSE;
-    private ArrayList<ViewOffsetHolder> brushArrayList = new ArrayList<>();
+    private ArrayList<ViewOffsetPair> brushArrayList = new ArrayList<>();
 
     private String mTranslation;
 
@@ -41,7 +41,10 @@ public class MainActivity extends AppCompatActivity {
     DrawView mDrawView;
 
     @InjectView(R.id.sdbrush)
-    ViewGroup brushContainer
+    ViewGroup brushContainer;
+
+    @InjectView(R.id.sdpallete)
+    ViewGroup paletteContainer;
 
 
     @Override
@@ -49,22 +52,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
+        ButterKnife.inject(this);
 
         mTranslation = (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) ?
             TRANSLATION_Y : TRANSLATION_X;
 
-        ViewGroup paletteContainer = (ViewGroup) findViewById(R.id.sdpallete);
         initCollapseFAB(paletteContainer, paletteArrayList);
-
-        brushContainer = (ViewGroup) findViewById(R.id.sdbrush);
         initCollapseFAB(brushContainer, brushArrayList);
 
-        ButterKnife.inject(this);
+
     }
 
 
     public void initCollapseFAB(final ViewGroup fabContainer,
-                                final ArrayList<ViewOffsetHolder> fabArrayList) {
+                                final ArrayList<ViewOffsetPair> fabArrayList) {
 
         fabContainer.getViewTreeObserver()
                 .addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
@@ -83,9 +84,9 @@ public class MainActivity extends AppCompatActivity {
                                 offset = button.getX() - prevButton.getX();
                                 prevButton.setTranslationX(offset);
                             }
-                            ViewOffsetHolder viewOffsetHolder =
-                                    new ViewOffsetHolder(fabContainer.getChildAt(i - 1), offset);
-                            fabArrayList.add(viewOffsetHolder);
+                            ViewOffsetPair viewOffsetPair =
+                                    new ViewOffsetPair(fabContainer.getChildAt(i - 1), offset);
+                            fabArrayList.add(viewOffsetPair);
                         }
                         return true;
                     }
@@ -119,26 +120,27 @@ public class MainActivity extends AppCompatActivity {
         onClickBrush(view);
     }
 
-    private Animator collapseExpandAnimator(View view, float offset, boolean collapse) {
-        float start = (collapse) ? 0.0f : offset;
-        float end = (collapse) ? offset : 0.0f;
-        return ObjectAnimator.ofFloat(view, mTranslation, start, end)
-                .setDuration(getResources().getInteger(android.R.integer.config_mediumAnimTime));
-    }
 
-    private void collapseExpandSpeedDial(ArrayList<ViewOffsetHolder> viewOffsetHolderArrayList, boolean collapse) {
+    private void collapseExpandSpeedDial(ArrayList<ViewOffsetPair> viewOffsetPairArrayList, boolean collapse) {
         AnimatorSet animatorSet = new AnimatorSet();
 
         ArrayList<Animator> animatorArrayList = new ArrayList<>();
-        for (int i = 0; i < viewOffsetHolderArrayList.size(); i++) {
+        for (int i = 0; i < viewOffsetPairArrayList.size(); i++) {
             Animator animator = collapseExpandAnimator(
-                    viewOffsetHolderArrayList.get(i).getView(),
-                    viewOffsetHolderArrayList.get(i).getOffset(),
+                    viewOffsetPairArrayList.get(i).getView(),
+                    viewOffsetPairArrayList.get(i).getOffset(),
                     collapse);
             animatorArrayList.add(animator);
         }
         animatorSet.playTogether(animatorArrayList);
         animatorSet.start();
+    }
+
+    private Animator collapseExpandAnimator(View view, float offset, boolean collapse) {
+        float start = (collapse) ? 0.0f : offset;
+        float end = (collapse) ? offset : 0.0f;
+        return ObjectAnimator.ofFloat(view, mTranslation, start, end)
+                .setDuration(getResources().getInteger(android.R.integer.config_mediumAnimTime));
     }
 
     public void undoLastLineDrawn(View view){

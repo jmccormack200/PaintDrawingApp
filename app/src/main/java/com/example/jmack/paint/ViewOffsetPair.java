@@ -5,11 +5,11 @@ import android.view.View;
 /**
  * Created by jmack on 6/1/16.
  */
-public class ViewOffsetHolder {
+public class ViewOffsetPair {
     public View view;
     public float offset;
 
-    public ViewOffsetHolder(View view, float offset) {
+    public ViewOffsetPair(View view, float offset) {
         this.view = view;
         this.offset = offset;
     }
