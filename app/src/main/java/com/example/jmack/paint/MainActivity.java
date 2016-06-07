@@ -14,16 +14,14 @@ import android.view.ViewTreeObserver;
 import java.util.ArrayList;
 import java.util.Objects;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+
 /**
  * The main activity lays out the UI and sets up the animations.
  *
- * @author John McCormack
- * @version 1.0
- * @since 2016-06-06
  */
 public class MainActivity extends AppCompatActivity {
-
-    private DrawView mDrawView;
 
     private static final boolean COLLAPSE = true;
     private static final float strokeWidth = 8.0f;
@@ -35,10 +33,15 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<ViewOffsetHolder> paletteArrayList = new ArrayList<>();
 
     private boolean collapseBrush = COLLAPSE;
-    private ViewGroup brushContainer;
     private ArrayList<ViewOffsetHolder> brushArrayList = new ArrayList<>();
 
     private String mTranslation;
+
+    @InjectView(R.id.drawview)
+    DrawView mDrawView;
+
+    @InjectView(R.id.sdbrush)
+    ViewGroup brushContainer
 
 
     @Override
@@ -47,11 +50,8 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
-            mTranslation = TRANSLATION_Y;
-        } else {
-            mTranslation = TRANSLATION_X;
-        }
+        mTranslation = (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) ?
+            TRANSLATION_Y : TRANSLATION_X;
 
         ViewGroup paletteContainer = (ViewGroup) findViewById(R.id.sdpallete);
         initCollapseFAB(paletteContainer, paletteArrayList);
@@ -59,8 +59,7 @@ public class MainActivity extends AppCompatActivity {
         brushContainer = (ViewGroup) findViewById(R.id.sdbrush);
         initCollapseFAB(brushContainer, brushArrayList);
 
-
-        mDrawView = (DrawView) findViewById(R.id.drawview);
+        ButterKnife.inject(this);
     }
 
 

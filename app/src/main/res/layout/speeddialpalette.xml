@@ -85,8 +85,7 @@
         android:onClick="onClickColor"
         app:backgroundTint="@color/Yellow"
         app:fabSize="mini"
-        app:rippleColor="@color/clickColor"
-        tools:targetApi="lollipop"/>
+        app:rippleColor="@color/clickColor"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/palette"
