@@ -35,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
     private boolean collapseBrush = COLLAPSE;
     private ArrayList<ViewOffsetPair> brushArrayList = new ArrayList<>();
 
+    private float mStartLocation;
+
     private String mTranslation;
 
     @InjectView(R.id.drawview)
@@ -66,6 +68,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void initCollapseFAB(final ViewGroup fabContainer,
                                 final ArrayList<ViewOffsetPair> fabArrayList) {
+
+
+        View rootView = fabContainer.getChildAt(0);
+        mStartLocation = Objects.equals(mTranslation, TRANSLATION_Y) ? rootView.getY() : rootView.getX();
 
         fabContainer.getViewTreeObserver()
                 .addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
@@ -137,8 +143,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private Animator collapseExpandAnimator(View view, float offset, boolean collapse) {
-        float start = (collapse) ? 0.0f : offset;
-        float end = (collapse) ? offset : 0.0f;
+        float start = (collapse) ? mStartLocation : offset;
+        float end = (collapse) ? offset : mStartLocation;
         return ObjectAnimator.ofFloat(view, mTranslation, start, end)
                 .setDuration(getResources().getInteger(android.R.integer.config_mediumAnimTime));
     }
