@@ -19,7 +19,6 @@ import butterknife.InjectView;
 
 /**
  * The main activity lays out the UI and sets up the animations.
- *
  */
 public class MainActivity extends AppCompatActivity {
 
@@ -57,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.inject(this);
 
         mTranslation = (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) ?
-            TRANSLATION_Y : TRANSLATION_X;
+                TRANSLATION_Y : TRANSLATION_X;
 
         initCollapseFAB(paletteContainer, paletteArrayList);
         initCollapseFAB(brushContainer, brushArrayList);
@@ -149,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
                 .setDuration(getResources().getInteger(android.R.integer.config_mediumAnimTime));
     }
 
-    public void undoLastLineDrawn(View view){
+    public void undoLastLineDrawn(View view) {
         mDrawView.clear();
     }
 

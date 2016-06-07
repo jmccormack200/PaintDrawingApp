@@ -39,11 +39,6 @@ public class DrawView extends View {
         setupDrawView();
     }
 
-    public DrawView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
-        setupDrawView();
-    }
-
     public void changeColor(int color) {
         this.color = color;
         setupDrawView();
