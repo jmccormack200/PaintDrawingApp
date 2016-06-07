@@ -47,7 +47,7 @@
   <component name="ChangeListManager">
     <list default="true" id="fa6dd9e9-dfa2-4ae0-b506-4d9004396d73" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/jmack/paint/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/jmack/paint/MainActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout-land/speeddialbrush.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout-land/speeddialbrush.xml" />
     </list>
     <ignored path="Paint.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -80,8 +80,8 @@
           <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/jmack/paint/MainActivity.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.44692737">
-                  <caret line="89" column="66" selection-start-line="89" selection-start-column="66" selection-end-line="89" selection-end-column="66" />
+                <state vertical-scroll-proportion="0.5139665">
+                  <caret line="88" column="36" selection-start-line="88" selection-start-column="36" selection-end-line="88" selection-end-column="36" />
                   <folding />
                 </state>
               </provider>
@@ -93,8 +93,8 @@
                 <state />
               </provider>
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-11.924528">
-                  <caret line="110" column="44" selection-start-line="110" selection-start-column="44" selection-end-line="110" selection-end-column="44" />
+                <state vertical-scroll-proportion="-16.339622">
+                  <caret line="115" column="37" selection-start-line="115" selection-start-column="37" selection-end-line="115" selection-end-column="37" />
                   <folding />
                 </state>
               </provider>
@@ -168,8 +168,8 @@
                 <state />
               </provider>
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="1.324228">
-                  <caret line="117" column="51" selection-start-line="117" selection-start-column="51" selection-end-line="117" selection-end-column="51" />
+                <state vertical-scroll-proportion="1.2173396">
+                  <caret line="111" column="44" selection-start-line="111" selection-start-column="44" selection-end-line="111" selection-end-column="44" />
                   <folding />
                 </state>
               </provider>
@@ -1846,9 +1846,9 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/jmack/paint/ViewOffsetHolder.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/jmack/paint/ViewOffsetPair.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout-land/activity_main.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout-land/speeddialbrush.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/speeddialbrush.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/speeddialbrush.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout-land/speeddialbrush.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/jmack/paint/MainActivity.java" />
       </list>
     </option>
@@ -2542,7 +2542,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="3" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2579,7 +2579,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2618,7 +2618,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2861,7 +2861,7 @@
         <state vertical-scroll-proportion="0.11731844">
           <caret line="7" column="3" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2928,13 +2928,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-land/speeddialbrush.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/dimens.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.924528">
-          <caret line="110" column="44" selection-start-line="110" selection-start-column="44" selection-end-line="110" selection-end-column="44" />
+        <state vertical-scroll-proportion="0.07281554">
+          <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
           <folding />
         </state>
       </provider>
@@ -2944,24 +2941,27 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.324228">
-          <caret line="117" column="51" selection-start-line="117" selection-start-column="51" selection-end-line="117" selection-end-column="51" />
+        <state vertical-scroll-proportion="1.2173396">
+          <caret line="111" column="44" selection-start-line="111" selection-start-column="44" selection-end-line="111" selection-end-column="44" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/dimens.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-land/speeddialbrush.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.07281554">
-          <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
+        <state vertical-scroll-proportion="-16.339622">
+          <caret line="115" column="37" selection-start-line="115" selection-start-column="37" selection-end-line="115" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/jmack/paint/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44692737">
-          <caret line="89" column="66" selection-start-line="89" selection-start-column="66" selection-end-line="89" selection-end-column="66" />
+        <state vertical-scroll-proportion="0.5139665">
+          <caret line="88" column="36" selection-start-line="88" selection-start-column="36" selection-end-line="88" selection-end-column="36" />
           <folding />
         </state>
       </provider>
