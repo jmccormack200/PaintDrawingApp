@@ -10,101 +10,64 @@
                 android:paddingBottom="@dimen/normal_padding">
 
     <android.support.design.widget.FloatingActionButton
+        style="@style/speed_dial_fab"
         android:id="@+id/brush_action_6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_above="@+id/brush_action_5"
         android:layout_alignEnd="@+id/brush"
-        android:layout_margin="@dimen/normal_padding"
-        android:contentDescription="@null"
         android:onClick="onClickBrushSize"
-        android:scaleType="center"
         android:src="@drawable/circle_1"
         app:backgroundTint="@color/Grey"
-        app:borderWidth="0dp"
-        app:fabSize="mini"
-        app:rippleColor="@color/clickColor"
         />
 
     <android.support.design.widget.FloatingActionButton
+        style="@style/speed_dial_fab"
         android:id="@+id/brush_action_5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_above="@+id/brush_action_4"
         android:layout_alignEnd="@+id/brush"
-        android:layout_margin="@dimen/normal_padding"
-        android:contentDescription="@null"
         android:onClick="onClickBrushSize"
-        android:scaleType="center"
         android:src="@drawable/circle_2"
         app:backgroundTint="@color/Grey"
-        app:fabSize="mini"
-        app:rippleColor="@color/clickColor"
         />
 
     <android.support.design.widget.FloatingActionButton
+        style="@style/speed_dial_fab"
         android:id="@+id/brush_action_4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_above="@+id/brush_action_3"
         android:layout_alignEnd="@+id/brush"
-        android:layout_margin="@dimen/normal_padding"
-        android:contentDescription="@null"
         android:onClick="onClickBrushSize"
-        android:scaleType="center"
         android:src="@drawable/circle_3"
         app:backgroundTint="@color/Grey"
-        app:fabSize="mini"
-        app:rippleColor="@color/clickColor"
         />
 
     <android.support.design.widget.FloatingActionButton
+        style="@style/speed_dial_fab"
         android:id="@+id/brush_action_3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_above="@+id/brush_action_2"
         android:layout_alignEnd="@+id/brush"
-        android:layout_margin="@dimen/normal_padding"
-        android:contentDescription="@null"
         android:onClick="onClickBrushSize"
-        android:scaleType="center"
         android:src="@drawable/circle_4"
         app:backgroundTint="@color/Grey"
-        app:fabSize="mini"
-        app:rippleColor="@color/clickColor"
         />
 
     <android.support.design.widget.FloatingActionButton
+        style="@style/speed_dial_fab"
         android:id="@+id/brush_action_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_above="@+id/brush_action_1"
         android:layout_alignEnd="@+id/brush"
-        android:layout_margin="@dimen/normal_padding"
-        android:contentDescription="@null"
         android:onClick="onClickBrushSize"
-        android:scaleType="center"
         android:src="@drawable/circle_5"
         app:backgroundTint="@color/Grey"
-        app:fabSize="mini"
-        app:rippleColor="@color/clickColor"
         />
 
     <android.support.design.widget.FloatingActionButton
+        style="@style/speed_dial_fab"
         android:id="@+id/brush_action_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_above="@+id/brush"
         android:layout_alignEnd="@+id/brush"
-        android:layout_margin="@dimen/normal_padding"
-        android:contentDescription="@null"
         android:onClick="onClickBrushSize"
-        android:scaleType="center"
         android:src="@drawable/circle_6"
         app:backgroundTint="@color/Grey"
-        app:fabSize="mini"
-        app:rippleColor="@color/clickColor"
-        tools:targetApi="lollipop"/>
+        />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/brush"
