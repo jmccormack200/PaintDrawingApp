@@ -49,6 +49,7 @@
         android:layout_toEndOf="@+id/palette"
         app:backgroundTint="@color/Yellow"
         />
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/palette"
         android:layout_width="wrap_content"

@@ -35,7 +35,7 @@
     </style>
 
     <style name="speed_dial_palette_style"
-        parent="speed_dial_fab">
+           parent="speed_dial_fab">
         <item name="android:onClick">onClickColor"</item>
     </style>
 
@@ -45,7 +45,7 @@
     </style>
 
     <style name="speed_dial_palette_style_landscape"
-        parent="speed_dial_palette_style">
+           parent="speed_dial_palette_style">
         <item name="android:layout_alignTop">@id/palette</item>
     </style>
 
