@@ -26,4 +26,10 @@
         <item name="backgroundTint">@color/Grey</item>
     </style>
 
+    <style name="speed_dial_palette_style"
+           parent="speed_dial_fab">
+        <item name="android:layout_alignEnd">@+id/palette</item>
+        <item name="android:onClick">onClickColor"</item>
+    </style>
+
 </resources>
