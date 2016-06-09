@@ -11,40 +11,40 @@
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/palette_action_6"
-        style="@style/speed_dial_palette_style"
+        style="@style/speed_dial_palette_style_portrait"
         android:layout_above="@+id/palette_action_5"
         app:backgroundTint="@color/Black"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/palette_action_5"
-        style="@style/speed_dial_palette_style"
+        style="@style/speed_dial_palette_style_portrait"
         android:layout_above="@+id/palette_action_4"
         app:backgroundTint="@color/Blue"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/palette_action_4"
-        style="@style/speed_dial_palette_style"
+        style="@style/speed_dial_palette_style_portrait"
         android:layout_above="@+id/palette_action_3"
         app:backgroundTint="@color/Aqua"
         />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/palette_action_3"
-        style="@style/speed_dial_palette_style"
+        style="@style/speed_dial_palette_style_portrait"
         android:layout_above="@+id/palete_action_2"
         app:backgroundTint="@color/Green"
         />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/palete_action_2"
-        style="@style/speed_dial_palette_style"
+        style="@style/speed_dial_palette_style_portrait"
         android:layout_above="@+id/palete_action_1"
         app:backgroundTint="@color/Red"
         />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/palete_action_1"
-        style="@style/speed_dial_palette_style"
+        style="@style/speed_dial_palette_style_portrait"
         android:layout_above="@+id/palette"
         app:backgroundTint="@color/Yellow"
         />
