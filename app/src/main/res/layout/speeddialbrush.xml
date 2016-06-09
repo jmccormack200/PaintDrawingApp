@@ -10,42 +10,42 @@
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/brush_action_6"
-        style="@style/speed_dial_brush_style"
+        style="@style/speed_dial_brush_style_portrait"
         android:layout_above="@+id/brush_action_5"
         android:src="@drawable/circle_1"
         />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/brush_action_5"
-        style="@style/speed_dial_brush_style"
+        style="@style/speed_dial_brush_style_portrait"
         android:layout_above="@+id/brush_action_4"
         android:src="@drawable/circle_2"
         />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/brush_action_4"
-        style="@style/speed_dial_brush_style"
+        style="@style/speed_dial_brush_style_portrait"
         android:layout_above="@+id/brush_action_3"
         android:src="@drawable/circle_3"
         />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/brush_action_3"
-        style="@style/speed_dial_brush_style"
+        style="@style/speed_dial_brush_style_portrait"
         android:layout_above="@+id/brush_action_2"
         android:src="@drawable/circle_4"
         />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/brush_action_2"
-        style="@style/speed_dial_brush_style"
+        style="@style/speed_dial_brush_style_portrait"
         android:layout_above="@+id/brush_action_1"
         android:src="@drawable/circle_5"
         />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/brush_action_1"
-        style="@style/speed_dial_brush_style"
+        style="@style/speed_dial_brush_style_portrait"
         android:layout_above="@+id/brush"
         android:src="@drawable/circle_6"
         />

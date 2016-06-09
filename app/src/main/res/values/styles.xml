@@ -16,14 +16,22 @@
         <item name="android:scaleType">center</item>
         <item name="fabSize">mini</item>
         <item name="rippleColor">@color/clickColor</item>
-
     </style>
 
     <style name="speed_dial_brush_style"
            parent="speed_dial_fab">
-        <item name="android:layout_alignEnd">@+id/brush</item>
         <item name="android:onClick">onClickBrushSize</item>
         <item name="backgroundTint">@color/Grey</item>
+    </style>
+
+    <style name="speed_dial_brush_style_portrait"
+           parent="speed_dial_brush_style">
+        <item name="android:layout_alignEnd">@+id/brush</item>
+    </style>
+
+    <style name="speed_dial_brush_style_land"
+           parent="speed_dial_brush_style">
+        <item name="android:layout_alignTop">@id/brush</item>
     </style>
 
     <style name="speed_dial_palette_style"
@@ -31,5 +39,7 @@
         <item name="android:layout_alignEnd">@+id/palette</item>
         <item name="android:onClick">onClickColor"</item>
     </style>
+
+
 
 </resources>
