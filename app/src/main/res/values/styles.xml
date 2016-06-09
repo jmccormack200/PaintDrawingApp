@@ -14,16 +14,16 @@
         <item name="android:layout_margin">@dimen/normal_padding</item>
         <item name="android:contentDescription">@null</item>
         <item name="android:scaleType">center</item>
-        <item name="app:fabSize">mini</item>
-        <item name="app:rippleColor">@color/clickColor</item>
-        <item name="tools:targetApi">lollipop"</item>
+        <item name="fabSize">mini</item>
+        <item name="rippleColor">@color/clickColor</item>
+
     </style>
 
     <style name="speed_dial_brush_style"
            parent="speed_dial_fab">
         <item name="android:layout_alignEnd">@+id/brush</item>
         <item name="android:onClick">onClickBrushSize</item>
-        <item name="app:backgroundTint">@color/Grey</item>
+        <item name="backgroundTint">@color/Grey</item>
     </style>
 
 </resources>
