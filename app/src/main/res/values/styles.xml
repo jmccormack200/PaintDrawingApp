@@ -19,4 +19,11 @@
         <item name="tools:targetApi">lollipop"</item>
     </style>
 
+    <style name="speed_dial_brush_style"
+           parent="speed_dial_fab">
+        <item name="android:layout_above">@+id/brush</item>
+        <item name="android:onClick">onClickBrushSize</item>
+        <item name="app:backgroundTint">@color/Grey</item>
+    </style>
+
 </resources>
